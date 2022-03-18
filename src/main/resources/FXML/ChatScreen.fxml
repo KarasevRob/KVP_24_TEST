@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="700.0" style="-fx-border-color: #14171A; -fx-background-color: #444444; -fx-border-width: 4; -fx-border-radius: 1;" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ScalaChatWindow">
+   <TextArea fx:id="msgField" editable="false" layoutX="14.0" layoutY="14.0" prefHeight="333.0" prefWidth="533.0" promptText="Welcome to KVP_Test chat!" style="-fx-border-width: 2; -fx-border-color: #2069e0;" wrapText="true">
+      <font>
+         <Font name="Ubuntu Bold" size="15.0" />
+      </font>
+      <cursor>
+         <Cursor fx:constant="TEXT" />
+      </cursor>
+   </TextArea>
+   <TextField fx:id="sendInput" layoutX="14.0" layoutY="358.0" prefHeight="26.0" prefWidth="596.0" promptText="/whisper @Recipient_Nickname@ to send private mesage!" style="-fx-border-color: #2069e0; -fx-border-width: 2; -fx-border-radius: 18; -fx-background-radius: 18;">
+      <font>
+         <Font name="System Bold" size="13.0" />
+      </font>
+      <cursor>
+         <Cursor fx:constant="TEXT" />
+      </cursor>
+   </TextField>
+   <Button fx:id="sendButton" defaultButton="true" layoutX="615.0" layoutY="360.0" mnemonicParsing="false" onAction="#actionSendButton" prefHeight="26.0" prefWidth="68.0" style="-fx-background-color: #2069e0; -fx-border-radius: 18; -fx-background-radius: 18;" text="Send">
+      <font>
+         <Font name="Ubuntu Bold" size="13.0" />
+      </font>
+      <cursor>
+         <Cursor fx:constant="HAND" />
+      </cursor>
+   </Button>
+   <Button fx:id="exitButton" layoutX="673.0" layoutY="1.0" mnemonicParsing="false" onAction="#actionExitButton" prefHeight="26.0" prefWidth="21.0" style="-fx-background-color: #14171A;" text="X" textFill="WHITE">
+      <font>
+         <Font name="Ubuntu Bold" size="13.0" />
+      </font>
+      <cursor>
+         <Cursor fx:constant="HAND" />
+      </cursor>
+   </Button>
+   <TextArea fx:id="currentOnline" editable="false" layoutX="556.0" layoutY="86.0" prefHeight="260.0" prefWidth="130.0" style="-fx-border-width: 2; -fx-border-color: #2069e0;" text="Currently online:" wrapText="true">
+      <cursor>
+         <Cursor fx:constant="TEXT" />
+      </cursor>
+      <font>
+         <Font name="Ubuntu Bold" size="13.0" />
+      </font>
+   </TextArea>
+   <Label layoutX="556.0" layoutY="36.0" text="Logged in as:" textFill="WHITE">
+      <font>
+         <Font name="Ubuntu Bold" size="15.0" />
+      </font>
+   </Label>
+   <Label fx:id="usernameDisplay" layoutX="560.0" layoutY="53.0" text="/username/" textFill="WHITE">
+      <font>
+         <Font name="Ubuntu Bold" size="15.0" />
+      </font>
+   </Label>
+   <effect>
+      <DropShadow />
+   </effect>
+</AnchorPane>
