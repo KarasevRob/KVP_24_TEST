@@ -1,5 +1,6 @@
 import User.{ExitUser, JsonSerializable, PrivateMsg, PublicMsg, SetUsername, WelcomeUser}
 import akka.actor.typed.ActorSystem
+import akka.actor.typed.javadsl.Behaviors
 import akka.cluster.typed.Cluster
 import com.typesafe.config.ConfigFactory
 import javafx.application.Platform
