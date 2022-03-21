@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="460.0" prefWidth="403.0" style="-fx-border-width: 4; -fx-border-radius: 4; -fx-border-color: #14171A; -fx-background-color: #444444;" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ScalaLoginController">
+   <Button fx:id="logButton" alignment="CENTER" defaultButton="true" layoutX="104.0" layoutY="360.0" mnemonicParsing="false" onAction="#actionLogButton" prefHeight="34.0" prefWidth="187.0" style="-fx-background-color: #2069e0; -fx-border-radius: 18; -fx-background-radius: 18;" text="Login" textAlignment="CENTER">
+      <font>
+         <Font name="Ubuntu Bold" size="13.0" />
+      </font>
+   </Button>
+   <Label fx:id="wrongLogin" layoutX="82.0" layoutY="230.0" prefHeight="15.0" prefWidth="240.0" textAlignment="CENTER" textFill="WHITE" AnchorPane.bottomAnchor="215.0" AnchorPane.leftAnchor="82.0">
+      <font>
+         <Font name="Ubuntu Bold Italic" size="15.0" />
+      </font>
+   </Label>
+   <TextField fx:id="portInput" alignment="CENTER" layoutX="104.0" layoutY="322.0" prefHeight="25.0" prefWidth="187.0" promptText="Port (must be unique)" style="-fx-border-color: #2069e0; -fx-background-radius: 18; -fx-border-radius: 18;" text="2551">
+      <font>
+         <Font name="Ubuntu Bold" size="13.0" />
+      </font>
+   </TextField>
+   <TextField fx:id="loginInput" alignment="CENTER" layoutX="105.0" layoutY="252.0" prefHeight="25.0" prefWidth="187.0" promptText="Enter your nickname" style="-fx-border-color: #2069e0; -fx-border-radius: 18; -fx-background-radius: 18;">
+      <font>
+         <Font name="Ubuntu Bold" size="13.0" />
+      </font>
+   </TextField>
+   <TextField fx:id="ipInput" alignment="CENTER" layoutX="104.0" layoutY="286.0" prefHeight="25.0" prefWidth="187.0" promptText="IP Address (e.g.127.0.0.1)" style="-fx-border-color: #2069e0; -fx-background-radius: 18; -fx-border-radius: 18;">
+      <font>
+         <Font name="Ubuntu Bold" size="13.0" />
+      </font>
+   </TextField>
+   <ImageView fitHeight="217.0" fitWidth="240.0" layoutX="98.0" pickOnBounds="true" preserveRatio="true">
+         <Image url="@../Pics/Chat_Icon.png" />
+   </ImageView>
+   <effect>
+      <DropShadow />
+   </effect>
+</AnchorPane>
