@@ -8,7 +8,7 @@ import javafx.event.ActionEvent
 
 
 
-class ScalaChatWindow extends JavaChatWindow {
+class ScalaChatController extends JavaChatController {
 
   var login: String = _
   var system: ActorSystem[JsonSerializable] = _
@@ -50,7 +50,6 @@ class ScalaChatWindow extends JavaChatWindow {
       sendInput.clear()
     }
   }
-
 
   override def actionExitButton(event: ActionEvent): Unit = {
     val nickname = login

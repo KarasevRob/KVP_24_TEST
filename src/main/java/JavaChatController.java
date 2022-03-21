@@ -9,7 +9,7 @@ import javafx.scene.control.TextField;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class JavaChatWindow implements Initializable {
+public class JavaChatController implements Initializable {
 
     @FXML
     protected TextArea msgField;

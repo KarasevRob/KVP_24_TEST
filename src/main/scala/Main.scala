@@ -1,8 +1,7 @@
 import javafx.application.Application
 import javafx.fxml.FXMLLoader
-import javafx.scene.paint.Color
 import javafx.scene.{Parent, Scene}
-import javafx.stage.{Stage, StageStyle}
+import javafx.stage.Stage
 
 
 class Main extends Application {

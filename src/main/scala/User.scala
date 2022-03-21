@@ -1,8 +1,6 @@
 import User.{ExitUser, JsonSerializable, PrivateMsg, PublicMsg, SetUsername, WelcomeUser}
 import akka.actor.typed.Behavior
 import akka.actor.typed.scaladsl.{AbstractBehavior, ActorContext, Behaviors}
-import javafx.scene.paint.Color
-import javafx.scene.text.Text
 
 object User {
   trait JsonSerializable
@@ -17,16 +15,16 @@ object User {
 
   case class ExitUser(nickname: String) extends JsonSerializable
 
-  protected def createActor(scalaMainController: ScalaChatWindow): Behavior[JsonSerializable] = {
+  protected def createActor(scalaMainController: ScalaChatController): Behavior[JsonSerializable] = {
     Behaviors.setup(context => new User(context, scalaMainController))
   }
 
-  def apply(scalaMainController: ScalaChatWindow): Behavior[JsonSerializable] = createActor(scalaMainController)
+  def apply(scalaMainController: ScalaChatController): Behavior[JsonSerializable] = createActor(scalaMainController)
 
   }
 
 
-class User(context: ActorContext[JsonSerializable], scalaChatWindow: ScalaChatWindow) extends AbstractBehavior[JsonSerializable](context) {
+class User(context: ActorContext[JsonSerializable], scalaChatWindow: ScalaChatController) extends AbstractBehavior[JsonSerializable](context) {
 
   val nickname: String = scalaChatWindow.login
   override def onMessage(msg: JsonSerializable): Behavior[JsonSerializable] = {

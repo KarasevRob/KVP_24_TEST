@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="700.0" style="-fx-border-color: #14171A; -fx-background-color: #657786; -fx-border-width: 2;" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ScalaChatWindow">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="700.0" style="-fx-border-color: #14171A; -fx-background-color: #657786; -fx-border-width: 2;" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ScalaChatController">
    <TextArea fx:id="msgField" editable="false" layoutX="14.0" layoutY="14.0" prefHeight="333.0" prefWidth="533.0" promptText="Welcome to KVP_Test chat!" style="-fx-background-color: #AAB8C2;" wrapText="true">
       <font>
          <Font name="Ubuntu Bold" size="15.0" />

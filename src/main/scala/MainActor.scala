@@ -4,9 +4,9 @@ import akka.actor.typed.pubsub.Topic
 import akka.actor.typed.scaladsl.Behaviors
 
 object MainActor {
-  def apply(scalaChatWindow: ScalaChatWindow): Behavior[JsonSerializable] = start(scalaChatWindow)
+  def apply(scalaChatWindow: ScalaChatController): Behavior[JsonSerializable] = start(scalaChatWindow)
 
-  private def start(scalaChatWindow: ScalaChatWindow):Behavior[JsonSerializable] = Behaviors.setup({ context =>
+  private def start(scalaChatWindow: ScalaChatController):Behavior[JsonSerializable] = Behaviors.setup({ context =>
     val actor = context.spawn(User(scalaChatWindow), "user")
     val topic = context.spawn(Topic[JsonSerializable]("topic"), "topic")
 

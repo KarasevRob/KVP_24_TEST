@@ -4,11 +4,12 @@ import javafx.scene.{Parent, Scene}
 import javafx.stage.Stage
 
 
-class ScalaLoginWindow extends JavaLoginWindow {
+class ScalaLoginController extends JavaLoginController {
+
   override def actionLogButton(event: ActionEvent): Unit = {
     if (loginInput.getText.trim.nonEmpty & portInput.getText.trim.nonEmpty) {
       logButton.getScene.getWindow.hide()
-      val controller = getRootController[ScalaChatWindow]("FXML/ChatScreen.fxml")
+      val controller = getRootController[ScalaChatController]("FXML/ChatScreen.fxml")
       val stage = new Stage()
       controller._2.login = loginInput.getText.trim
       controller._2.startSystem(portInput.getText.trim, if (ipInput.getText.trim.isEmpty) "localhost" else ipInput.getText.trim)
