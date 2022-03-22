@@ -3,9 +3,8 @@ import javafx.fxml.FXMLLoader
 import javafx.scene.{Parent, Scene}
 import javafx.stage.Stage
 
-case class RootController[T](parent: Parent, controller: T)
 
-class ScalaLoginController extends LoginController {
+class LoginControllerImpl extends LoginController {
 
   override def actionLogButton(event: ActionEvent): Unit = {
     if (loginInput.getText.trim.nonEmpty & portInput.getText.trim.nonEmpty) {
@@ -34,6 +33,7 @@ class ScalaLoginController extends LoginController {
     val controller = loader.getController[T]
     RootController(root, controller)
   }
+  case class RootController[T](parent: Parent, controller: T)
 }
 
 
