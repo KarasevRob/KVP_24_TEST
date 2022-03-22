@@ -3,7 +3,6 @@ import javafx.fxml.FXMLLoader
 import javafx.scene.{Parent, Scene}
 import javafx.stage.Stage
 
-
 class Main extends Application {
   def start(stage: Stage): Unit = {
     val root: Parent = FXMLLoader.load(getClass.getResource("/FXML/LoginScreen.fxml"))
@@ -11,6 +10,5 @@ class Main extends Application {
     stage.setTitle("KVP24-Chat")
     stage.setResizable(false)
     stage.show()
-
   }
 }

@@ -1,14 +1,10 @@
-import User.{ExitUser, JsonSerializable, PrivateMsg, PublicMsg, WelcomeUser}
+import UserActor._
 import akka.actor.typed.ActorSystem
-import akka.cluster.typed.Cluster
 import com.typesafe.config.ConfigFactory
 import javafx.application.Platform
 import javafx.event.ActionEvent
 
-
-
-
-class ScalaChatController extends JavaChatController {
+class ChatControllerImpl extends ChatController {
 
   var login: String = _
   var system: ActorSystem[JsonSerializable] = _
@@ -18,45 +14,39 @@ class ScalaChatController extends JavaChatController {
             akka.remote.artery.canonical.port=$port
             akka.cluster.seed-nodes = ["akka://system@$address:2551"]
             """).withFallback(ConfigFactory.load())
-    this.system = ActorSystem(MainActor(this), "system", config)
-    val cluster = Cluster(this.system)
+    system = ActorSystem(MainActor(this), "system", config)
     setOnline()
   }
 
   protected def setOnline(): Unit = {
-    val nickname = login
-    usernameDisplay.setText(s"<$nickname>")
+    usernameDisplay.setText(s"<$login>")
     Thread.sleep(3000) // Ожидание пока запустится акторная система
-    this.system ! WelcomeUser()
+    system ! WelcomeUser
   }
 
   override def actionSendButton(event: ActionEvent): Unit = {
-    val nickname = login
     val message = sendInput.getText.trim
     if (message.nonEmpty) {
       message match {
-
         case input: String if message.startsWith("/whisper") =>
           val part = input.split("@", 3)
           if (part.length <= 2) {
-            system ! PublicMsg(nickname, input)
+            system ! PublicMsg(login, input)
           } else {
             val destination = part(1)
             val message = part(2)
-            system ! PrivateMsg(nickname, destination, message)
+            system ! PrivateMsg(login, destination, message)
           }
-        case _ => system ! PublicMsg(nickname, message)
+        case _ => system ! PublicMsg(login, message)
       }
       sendInput.clear()
     }
   }
 
   override def actionExitButton(event: ActionEvent): Unit = {
-    val nickname = login
-    this.system ! ExitUser(nickname)
-    this.system.terminate()
+    system ! ExitUser(login)
+    system.terminate()
     Platform.exit()
     System.exit(0)
   }
-
 }

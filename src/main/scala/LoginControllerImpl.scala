@@ -3,17 +3,22 @@ import javafx.fxml.FXMLLoader
 import javafx.scene.{Parent, Scene}
 import javafx.stage.Stage
 
+case class RootController[T](parent: Parent, controller: T)
 
-class ScalaLoginController extends JavaLoginController {
+class ScalaLoginController extends LoginController {
 
   override def actionLogButton(event: ActionEvent): Unit = {
     if (loginInput.getText.trim.nonEmpty & portInput.getText.trim.nonEmpty) {
       logButton.getScene.getWindow.hide()
-      val controller = getRootController[ScalaChatController]("FXML/ChatScreen.fxml")
+
+      val rootController = getRootController[ChatControllerImpl]("FXML/ChatScreen.fxml")
       val stage = new Stage()
-      controller._2.login = loginInput.getText.trim
-      controller._2.startSystem(portInput.getText.trim, if (ipInput.getText.trim.isEmpty) "localhost" else ipInput.getText.trim)
-      stage.setScene(new Scene(controller._1))
+      val host = if (ipInput.getText.trim.isEmpty) "localhost" else ipInput.getText.trim
+
+      rootController.controller.login = loginInput.getText.trim
+      rootController.controller.startSystem(portInput.getText.trim, host)
+
+      stage.setScene(new Scene(rootController.parent))
       stage.setTitle("KVP24-Chat")
       stage.setResizable(false)
       stage.showAndWait()
@@ -22,12 +27,12 @@ class ScalaLoginController extends JavaLoginController {
     }
   }
 
-  def getRootController[T](path: String): (Parent, T) = {
+  def getRootController[T](path: String): RootController[T] = {
     val url = getClass.getClassLoader.getResource(path)
     val loader = new FXMLLoader(url)
     val root = loader.load[Parent]()
     val controller = loader.getController[T]
-    (root, controller)
+    RootController(root, controller)
   }
 }
 

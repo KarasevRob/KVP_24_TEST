@@ -4,8 +4,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
-
-public class JavaLoginController {
+public class LoginController {
 
     @FXML
     protected Button logButton;
