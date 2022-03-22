@@ -5,23 +5,23 @@ import akka.actor.typed.scaladsl.{AbstractBehavior, ActorContext, Behaviors}
 object UserActor {
   trait JsonSerializable
 
+  case object WelcomeUser extends JsonSerializable
+
+  case class ExitUser(nickname: String) extends JsonSerializable
+
+  case class SetUsername(nickname: String) extends JsonSerializable
+
   case class PublicMsg(nickname: String, text: String) extends JsonSerializable
 
   case class PrivateMsg(nickname: String, to: String, message: String) extends JsonSerializable
 
-  case class SetUsername(nickname: String) extends JsonSerializable
-
-  case class ExitUser(nickname: String) extends JsonSerializable
-
-  case object WelcomeUser extends JsonSerializable
-
-  protected def createActor(controller: ChatControllerImpl): Behavior[JsonSerializable] = {
-    Behaviors.setup(context => new UserActor(context, controller))
-  }
-
   def apply(controller: ChatControllerImpl): Behavior[JsonSerializable] = createActor(controller)
 
-  }
+}
+
+protected def createActor(controller: ChatControllerImpl): Behavior[JsonSerializable] = {
+  Behaviors.setup(context => new UserActor(context, controller))
+}
 
 
 class UserActor(context: ActorContext[JsonSerializable], chatWindow: ChatControllerImpl) extends AbstractBehavior[JsonSerializable](context) {
